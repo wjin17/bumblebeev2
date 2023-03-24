@@ -4,7 +4,7 @@ export interface IOpenPlayHero {}
 
 const OpenPlayHero: React.FC<IOpenPlayHero> = () => {
   return (
-    <section className="body-font text-gray-600">
+    <section id="open-play" className="body-font text-gray-600">
       <div className="container mx-auto px-5 py-24">
         <div className="mb-12 flex w-full flex-col text-center">
           <h1 className="mb-4 text-5xl font-bold text-amber-900">Open play</h1>

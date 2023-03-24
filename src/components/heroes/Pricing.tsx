@@ -41,7 +41,8 @@ const PricingHero: React.FC<IPricingHero> = () => {
             <h1 className="w-52 xl:w-auto">Baby Bee {'(Under 1yr)'}</h1>
             <h1>$14</h1>
           </div>
-          <RoundButton
+          <RoundLink
+            href="#location"
             label="Contact us"
             className="mt-4 bg-amber-300 hover:bg-amber-200"
           />
@@ -58,7 +59,8 @@ const PricingHero: React.FC<IPricingHero> = () => {
             <h1 className="w-52 xl:w-auto">Any additional bees</h1>
             <h1>+$20</h1>
           </div>
-          <RoundButton
+          <RoundLink
+            href="#location"
             label="Contact us"
             className="mt-4 bg-amber-300 hover:bg-amber-200"
           />

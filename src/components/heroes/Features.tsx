@@ -54,7 +54,10 @@ const FeatureItem: React.FC<IFeatureItem> = ({ name, icon }) => {
 
 const FeaturesHero: React.FC<IFeatureHero> = () => {
   return (
-    <section className="mx-auto min-h-screen max-w-7xl snap-start items-center justify-between px-8 md:mt-0 md:flex">
+    <section
+      id="our-space"
+      className="mx-auto min-h-screen max-w-7xl snap-start items-center justify-between px-8 md:mt-0 md:flex"
+    >
       <div className="max-w-screen-xl py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
           <div className="mx-auto max-w-lg text-center lg:mx-0 lg:text-left">
@@ -67,9 +70,9 @@ const FeaturesHero: React.FC<IFeatureHero> = () => {
               curiosity and learning.
             </p>
             <RoundLink
-              href="/#location"
+              href="#open-play"
               className="bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
-              label="Our location"
+              label="Open play"
             />
           </div>
 

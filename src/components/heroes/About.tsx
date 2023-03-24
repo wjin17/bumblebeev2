@@ -28,9 +28,9 @@ const AboutHero: React.FC<IAboutHero> = () => {
         </p>
         <div>
           <RoundLink
-            href="/#location"
+            href="#our-space"
             className="bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
-            label="Our location"
+            label="Our space"
           />
         </div>
       </div>
