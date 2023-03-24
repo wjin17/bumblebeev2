@@ -1,6 +1,5 @@
 import PrimaryLayout from '@/components/layout/Primary'
 import { ContextProvider } from '@/hooks/useContext'
-import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
