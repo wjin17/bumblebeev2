@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import bdayParty from '../../../public/assets/bday-partay.jpg'
+import bdayParty from '../../../public/assets/raised-balloon-thing.jpg'
 
 interface IPartyIntroHero {}
 

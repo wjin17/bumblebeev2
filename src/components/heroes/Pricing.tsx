@@ -8,7 +8,7 @@ const PricingHero: React.FC<IPricingHero> = () => {
   return (
     <section
       id="pricing"
-      className="mx-auto min-h-screen max-w-7xl items-center justify-between px-8 pt-16"
+      className="mx-auto min-h-screen max-w-7xl items-center justify-between px-8 pt-32"
     >
       <h1 className="text-5xl font-bold text-amber-900 md:text-7xl">Pricing</h1>
       <div className="mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
@@ -67,7 +67,7 @@ const PricingHero: React.FC<IPricingHero> = () => {
         </PricingCard>
         <PricingCard
           title="Parties"
-          description="Starts at $550 for 15 children and includes exclusive use of our space for 4 hours. Other packages available as well!"
+          description="Starts at $650 for 15 children and includes exclusive use of our space for 4 hours. Other packages available as well!"
         >
           <RoundLink
             label="Learn more"

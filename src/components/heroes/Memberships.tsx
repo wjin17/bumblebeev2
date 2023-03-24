@@ -1,7 +1,7 @@
 import type { StaticImageData } from 'next/image'
 import Image from 'next/image'
 
-import lightRoom from '../../../public/assets/happy-kid.jpg'
+import dellaBee from '../../../public/assets/della-bee.jpg'
 import toddlerRoom from '../../../public/assets/blocks.jpg'
 import RoundLink from '../buttons/RoundLink'
 
@@ -11,7 +11,7 @@ type CollageImage = {
 }
 
 const images: FixedLengthArray<2, CollageImage> = [
-  { image: lightRoom, alt: 'Light room' },
+  { image: dellaBee, alt: 'Light room' },
   { image: toddlerRoom, alt: 'Toddler room' },
 ]
 

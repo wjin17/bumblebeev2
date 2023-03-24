@@ -9,23 +9,32 @@ interface IPartyPackageCard {
 interface IPartyPackageCard extends React.ComponentPropsWithoutRef<'div'> {}
 
 const CommonPackage = [
-  'In addition to guest seating, we will provide 1 table for food, 1 table for refreshments, 1 table for cake/desserts and 1 table for presents. All tables will have table cloths provided in colored plastic.',
+  'Backdrop stands, tablecloths, plates and utensils are available upon request.',
   'Paper plates and utensils are available upon request.',
   'You will have to provide food and refreshments, decorations and/or party favors, platters and serveware.',
-  'Available party times are 9am-1pm (you can come in starting at 9am to set up and all party materials must be cleaned up by 1pm) and 2pm-6pm (you can come in starting at 2pm to set up and all party materials must be cleaned up by 6pm).',
 ]
 
 const BasePackage = [
   'Admissions for 15 children ages 1-10 excluding the guest of honor.',
   '4 hours of exclusive use of our playspace, including set up and clean up time.',
+  'Available party times are 9am-1pm (you can come in starting at 9am to set up and all party materials must be cleaned up by 1pm) and 2pm-6pm (you can come in starting at 2pm to set up and all party materials must be cleaned up by 6pm).',
   '2 of our amazing staff members to help with set up, party time and clean up.',
   ...CommonPackage,
 ]
 
 const MiniPackage = [
   'Admissions for 10 children ages 1-10 excluding the guest of honor.',
-  '2.5 hours of exclusive use of our playspace, including set up and clean up time.',
-  '2 backdrop stands for decoration if needed.',
+  '2 hours of exclusive use of our playspace and 30 minutes .',
+  'Available party times are a 2.5hr time slot between 9:30am-1pm and 2:00pm-5pm',
+  //'2 backdrop stands for decoration if needed.',
+  ...CommonPackage,
+]
+
+const FullDayPackage = [
+  'Admissions for 15 children ages 1-10 excluding the guest of honor.',
+  '4 hours of exclusive use of our playspace, including set up and clean up time.',
+  'Available times are 10am-5pm',
+  '2 of our amazing staff members to help with set up, party time and clean up.',
   ...CommonPackage,
 ]
 
@@ -50,7 +59,7 @@ const PartyInfoHero: React.FC<IPartyInfoHero> = () => {
     <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-8">
       <div className="mx-auto mt-8 max-w-3xl">
         <div className="mt-4">
-          <h1 className="mb-4 text-6xl font-extrabold text-amber-900">
+          <h1 className="mb-8 text-5xl font-bold md:text-7xl">
             Party at Bumblebee!
           </h1>
           {/* <p className="max-w-sm text-lg text-neutral-700">
@@ -99,8 +108,21 @@ const PartyInfoHero: React.FC<IPartyInfoHero> = () => {
           </ul>
         </div>
         <div className="mb-8">
+          <h1 className="text-4xl text-amber-900">Full Day Party</h1>
+          <p className="mb-4 text-xl text-amber-900">starts at $1,100</p>
+          <ul className="list-inside list-disc">
+            {FullDayPackage.map((details, index) => {
+              return (
+                <li key={index} className="mb-2 text-lg">
+                  {details}
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+        <div className="mb-8">
           <h1 className="text-4xl text-amber-900">Mini Party</h1>
-          <p className="text-xl text-amber-900">starts at $400</p>
+          <p className="mb-4 text-xl text-amber-900">starts at $400</p>
           <ul className="list-inside list-disc">
             {MiniPackage.map((details, index) => {
               return (
