@@ -9,10 +9,10 @@ interface ISidebar {
 interface ISidebar extends React.ComponentPropsWithoutRef<'header'> {}
 
 const LINKS = [
-  { title: 'Home', slug: '/' },
-  { title: 'Visit', slug: '/visit' },
-  { title: 'Parties', slug: '/parties' },
-  { title: 'Calendar', slug: '/calendar' },
+  { title: 'Home', href: '/' },
+  { title: 'Visit', href: '/visit' },
+  { title: 'Parties', href: '/parties' },
+  { title: 'Calendar', href: '/calendar' },
   { title: 'Waiver', href: 'https://www.waiverfile.com/b/BumblebeePlayspace' },
 ]
 
@@ -22,6 +22,7 @@ const Sidebar: React.FC<ISidebar> = ({
   className,
   ...sideBarProps
 }) => {
+  const externalLinkRegex = /^http/
   const { pathname } = useRouter()
   return (
     <div
@@ -32,26 +33,28 @@ const Sidebar: React.FC<ISidebar> = ({
       {...sideBarProps}
     >
       <div className="fixed right-0 flex h-full w-64 flex-col justify-between rounded-l-3xl bg-white py-32 px-8 shadow-2xl md:w-80">
-        {LINKS.map(({ title, slug, href }) => {
-          if (slug) {
+        {LINKS.map(({ title, href }) => {
+          if (externalLinkRegex.test(href)) {
             return (
-              <Link
+              <a
                 key={title}
-                href={slug}
+                href={href}
                 className="group text-amber-900 transition duration-300"
                 onClick={closeSidebar}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <h1 className="text-4xl font-bold">{title}</h1>
                 <span
                   className={`block h-0.5 ${
-                    slug === pathname ? 'max-w-full' : 'max-w-0'
+                    href === pathname ? 'max-w-full' : 'max-w-0'
                   }  h-2 rounded-full bg-amber-900 transition-all duration-500 group-hover:max-w-full`}
                 ></span>
-              </Link>
+              </a>
             )
           } else if (href) {
             return (
-              <a
+              <Link
                 key={title}
                 href={href}
                 className="group text-amber-900 transition duration-300"
@@ -60,10 +63,10 @@ const Sidebar: React.FC<ISidebar> = ({
                 <h1 className="text-4xl font-bold">{title}</h1>
                 <span
                   className={`block h-0.5 ${
-                    slug === pathname ? 'max-w-full' : 'max-w-0'
+                    href === pathname ? 'max-w-full' : 'max-w-0'
                   }  h-2 rounded-full bg-amber-900 transition-all duration-500 group-hover:max-w-full`}
                 ></span>
-              </a>
+              </Link>
             )
           }
         })}
