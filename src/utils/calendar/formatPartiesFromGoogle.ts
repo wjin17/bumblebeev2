@@ -30,27 +30,28 @@ export function formatPartiesFromGoogle(
 
   const days: Availabilities = {}
 
-  eachDayOfInterval({ start, end }).map((day) => {
+  for (const day of eachDayOfInterval({ start, end })) {
     const dayWithTZ = utcToZonedTime(day, timeZone)
     days[formatWithTZ(dayWithTZ, dayMonthYearFormat)] = {
       morningAvailable: true,
       afternoonAvailable: true,
     }
-  })
+  }
 
   for (const time of unavailableTimes) {
     const startTime = (time.start as GoogleCalendarItemDateTime).dateTime
     const endTime = (time.end as GoogleCalendarItemDateTime).dateTime
     const startWithTZ = utcToZonedTime(startTime, timeZone)
+    const endWithTZ = utcToZonedTime(endTime, timeZone)
     const date = formatWithTZ(startWithTZ, dayMonthYearFormat)
 
-    if (getHours(new Date(startTime)) < 13) {
+    if (getHours(startWithTZ) < 13) {
       days[date]!['morningAvailable'] = false
     }
-    if (getHours(new Date(startTime)) >= 13) {
+    if (getHours(startWithTZ) >= 13) {
       days[date]!['afternoonAvailable'] = false
     }
-    if (getHours(new Date(endTime)) >= 13) {
+    if (getHours(endWithTZ) >= 13) {
       days[date]!['afternoonAvailable'] = false
     }
   }

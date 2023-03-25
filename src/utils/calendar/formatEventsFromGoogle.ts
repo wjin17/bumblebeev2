@@ -1,6 +1,4 @@
-import { eachDayOfInterval, getHours, parseISO } from 'date-fns'
-import { utcToZonedTime } from 'date-fns-tz'
-import formatWithTZ from 'date-fns-tz/format'
+import { eachDayOfInterval, parseISO, format } from 'date-fns'
 
 /**
  *
@@ -30,20 +28,18 @@ export function formatEventsFromGoogle(
   end: Date,
   events: GoogleCalendarItem[]
 ) {
-  const timeZone = 'America/Los_Angeles'
   const dayMonthYearFormat = 'MMM d, yyyy'
 
   const days: Events = {}
 
   eachDayOfInterval({ start, end }).map((day) => {
-    const dayWithTZ = utcToZonedTime(day, timeZone)
-    days[formatWithTZ(dayWithTZ, dayMonthYearFormat)] = []
+    days[format(day, dayMonthYearFormat)] = []
   })
 
   for (const event of events) {
     const isFullDay = !Object.keys(event.start).includes('dateTime')
     if (isFullDay) {
-      const date = formatWithTZ(
+      const date = format(
         parseISO((event.start as GoogleCalendarItemDate).date),
         dayMonthYearFormat
       )
@@ -56,14 +52,14 @@ export function formatEventsFromGoogle(
     } else {
       const eventStart = (event.start as GoogleCalendarItemDateTime).dateTime
       const eventEnd = (event.end as GoogleCalendarItemDateTime).dateTime
-      const startWithTZ = utcToZonedTime(eventStart, timeZone)
-      const endWithTZ = utcToZonedTime(eventEnd, timeZone)
-      const date = formatWithTZ(startWithTZ, dayMonthYearFormat)
+      const startDate = new Date(eventStart)
+      const endDate = new Date(eventEnd)
+      const date = format(startDate, dayMonthYearFormat)
       days[date]!.push({
         summary: event.summary,
         description: event.description || '',
-        start: startWithTZ.toString(),
-        end: endWithTZ.toString(),
+        start: startDate.toString(),
+        end: endDate.toString(),
       })
     }
   }
