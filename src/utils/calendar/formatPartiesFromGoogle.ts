@@ -44,13 +44,13 @@ export function formatPartiesFromGoogle(
     const startWithTZ = utcToZonedTime(startTime, timeZone)
     const date = formatWithTZ(startWithTZ, dayMonthYearFormat)
 
-    if (getHours(new Date(startTime)) < 13) {
+    if (getHours(utcToZonedTime(startTime, timeZone)) < 13) {
       days[date]!['morningAvailable'] = false
     }
-    if (getHours(new Date(startTime)) >= 13) {
+    if (getHours(utcToZonedTime(startTime, timeZone)) >= 13) {
       days[date]!['afternoonAvailable'] = false
     }
-    if (getHours(new Date(endTime)) >= 13) {
+    if (getHours(utcToZonedTime(endTime, timeZone)) >= 13) {
       days[date]!['afternoonAvailable'] = false
     }
   }

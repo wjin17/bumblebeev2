@@ -2,6 +2,7 @@ import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { formatEventsFromGoogle } from '@/utils/calendar/formatEventsFromGoogle'
+import { utcToZonedTime } from 'date-fns-tz'
 
 const { PUBLIC_GOOGLE_CAL_ID: publicCalendarId, GOOGLE_CAL_KEY: googleCalKey } =
   process.env
@@ -19,6 +20,8 @@ export default async function handler(
 ) {
   const { start, end } = req.query
 
+  const timeZone = 'America/Los_Angeles'
+
   const calendarURL = `https://www.googleapis.com/calendar/v3/calendars/${publicCalendarId}/events`
   const queryParams = {
     timeMin: start,
@@ -32,8 +35,8 @@ export default async function handler(
   })
 
   const events = formatEventsFromGoogle(
-    new Date(start),
-    new Date(end),
+    utcToZonedTime(start, timeZone),
+    utcToZonedTime(end, timeZone),
     data.items
   )
 

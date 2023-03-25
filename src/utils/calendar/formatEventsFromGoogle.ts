@@ -71,8 +71,8 @@ export function formatEventsFromGoogle(
   for (const day in days) {
     days[day]!.sort((a, b) => {
       if (!a.start || !b.start) return 1
-      const aStart = new Date(a.start)
-      const bStart = new Date(b.start)
+      const aStart = utcToZonedTime(a.start, timeZone)
+      const bStart = utcToZonedTime(b.start, timeZone)
       if (aStart > bStart) return 1
       if (aStart < bStart) return -1
       return 0
