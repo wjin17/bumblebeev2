@@ -6,7 +6,7 @@ COPY package*.json ./
 FROM base as dev
 RUN npm install
 COPY . .
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev:polling"]
 
 FROM dev as build
 ENV BUILD_STAGE=build

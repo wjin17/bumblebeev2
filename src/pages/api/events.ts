@@ -30,7 +30,7 @@ export default async function handler(
   const { data } = await axios.get<GoogleCalendarResponse>(calendarURL, {
     params: queryParams,
   })
-  //console.log("data", data);
+
   const events = formatEventsFromGoogle(
     new Date(start),
     new Date(end),

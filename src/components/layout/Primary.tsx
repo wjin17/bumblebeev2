@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Hamburger from '../buttons/Hamburger'
 import Sidebar from '../navigation/Sidebar'
 import Footer from '../tapas/Footer'
+import BouncerBee from '../tapas/BouncerBee'
 
 interface IPrimaryLayout {}
 
@@ -11,7 +12,7 @@ interface IPrimaryLayout extends React.ComponentPropsWithoutRef<'div'> {}
 const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
-    <div className="relative w-full">
+    <div className="w-full">
       <Head>
         <link
           rel="apple-touch-icon"
@@ -33,6 +34,7 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
       </Head>
+      <BouncerBee />
       {children}
       <Sidebar
         isOpen={menuOpen}
