@@ -1,69 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bumblebee Site 🐝
 
-## Getting Started
+![NodeVersion](https://img.shields.io/badge/NodeJS-18.13.0-green)
 
-First, run the development server:
+The _next_ generation site for all things Bumblebee ☺️
+
+## Table of Contents
+
+1. [Getting started](#getting-started)
+2. [Project structure](#project-structure)
+3. [Deployment](#deployment)
+4. [Helpful links](#links)
+
+## Getting started
+
+Environment Variables
+
+Same as before
+
+```bash
+PUBLIC_GOOGLE_CAL_ID=*****************
+GOOGLE_CAL_KEY=*****************
+```
+
+Useful scripts
+
+run in development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+build files
 
 ```bash
-podman run \
-    --name test \
-    -p 3000:3000 \
-    -v ./:/usr/src/app \
-    -v /usr/src/app/node_modules \
-    -v /usr/src/app/.next \
-    -d \
-    test
-
-- maybe just use compose for volumes
-
-podman build --target dev -t test .
-podman run -p 3000:3000 -d <image name>
-
-version: '3.4'
-services:
-  webapp-prod:
-    build:
-      context: ./dir
-      dockerfile: Dockerfile
-      target: prod
-  webapp-dev:
-    build:
-      context: ./dir
-      dockerfile: Dockerfile
-      target: dev
-
-podman-compose down && podman container prune -f && podman image prune -af
+npm run build
 ```
+
+run in prod &larr; make sure to build before
+
+```bash
+npm start
+```
+
+### With docker or your favorite container tool
+
+dev env
+
+```bash
+docker-compose up dev -d
+```
+
+simulate prod
+
+```bash
+docker-compose up server -d
+```
+
+## Project structure
+
+```
+├── public                  # Put your assets here, e.g., images, sitemap, robots.txt
+├── src
+│   ├── components
+│       ├── heroes          # big sections
+│       ├── layout          # site container
+│       ├── navigation      # sidebar items
+│       ├── tapas           # random components
+│       ...
+│   ├── pages               # path becomes route on website
+│   ...
+...
+```
+
+### Components
+
+The heroes folder contains the sections that go on pages
+
+Add an item to the LINKS variable in navigation/Sidebar to add a link to the sidebar
+
+### Pages
+
+File paths become routes
+
+pages/things/something.tsx &rarr; bumblebeeplayspace.com/things/something
+
+You can also use the Head tag from nextjs to edit the head tag in the rendered html for SEO, titles, icons, etc
+
+### API
+
+Apis are much easier now. All files in pages/api become api routes with the same routing rules as pages except they are prepending with /api
+
+## Deployment
+
+Just link the project to the repo, add environment variables, and it should automatically handle everything.
+
+[more info](https://docs.netlify.com/integrations/frameworks/next-js/overview/)
+
+## Links
+
+- [Next.js](https://nextjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
