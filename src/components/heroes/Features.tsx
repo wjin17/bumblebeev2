@@ -3,6 +3,7 @@ import {
   MdBrush,
   MdOutlineChair,
   MdOutlineChildCare,
+  MdOutlineFoodBank,
   MdOutlineLocalGroceryStore,
   MdOutlineMusicNote,
   MdOutlineTheaterComedy,
@@ -56,7 +57,7 @@ const FeaturesHero: React.FC<IFeatureHero> = () => {
   return (
     <section
       id="our-space"
-      className="mx-auto min-h-screen max-w-7xl snap-start items-center justify-between px-8 md:mt-0 md:flex"
+      className="mx-auto max-w-7xl snap-start items-center justify-between px-8 md:mt-0 md:flex"
     >
       <div className="max-w-screen-xl py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
@@ -80,6 +81,12 @@ const FeaturesHero: React.FC<IFeatureHero> = () => {
             {items.map(({ name, icon }) => (
               <FeatureItem key={name} name={name} icon={icon} />
             ))}
+            <div className="sm:hidden">
+              <FeatureItem
+                name={'Snack room'}
+                icon={<MdOutlineFoodBank size={30} />}
+              />
+            </div>
           </div>
         </div>
       </div>
