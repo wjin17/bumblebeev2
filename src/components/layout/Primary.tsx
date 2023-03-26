@@ -1,16 +1,14 @@
 import Head from 'next/head'
-import { useState } from 'react'
-import Hamburger from '../buttons/Hamburger'
-import Sidebar from '../navigation/Sidebar'
+
 import Footer from '../tapas/Footer'
 import BouncerBee from '../tapas/BouncerBee'
+import Navigation from '../navigation/Navigation'
 
 interface IPrimaryLayout {}
 
 interface IPrimaryLayout extends React.ComponentPropsWithoutRef<'div'> {}
 
 const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
-  const [menuOpen, setMenuOpen] = useState(false)
   return (
     <div className="w-full">
       <Head>
@@ -34,18 +32,9 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({ children }) => {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
       </Head>
+      <Navigation />
       <BouncerBee />
       {children}
-      <Sidebar
-        isOpen={menuOpen}
-        closeSidebar={() => setMenuOpen(false)}
-        className="z-50"
-      />
-      <Hamburger
-        className="fixed top-6 right-6 z-50 ml-auto text-neutral-500"
-        menuOpen={menuOpen}
-        onClick={() => setMenuOpen((prev) => !prev)}
-      />
       <Footer />
     </div>
   )

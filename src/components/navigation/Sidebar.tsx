@@ -3,27 +3,21 @@ import { useRouter } from 'next/router'
 
 interface ISidebar {
   isOpen: boolean
+  links: INavigationLink[]
   closeSidebar: () => void
 }
 
 interface ISidebar extends React.ComponentPropsWithoutRef<'header'> {}
 
-const LINKS = [
-  { title: 'Home', href: '/' },
-  { title: 'Visit', href: '/visit' },
-  { title: 'Parties', href: '/parties' },
-  { title: 'Calendar', href: '/calendar' },
-  { title: 'Waiver', href: 'https://www.waiverfile.com/b/BumblebeePlayspace' },
-]
-
 const Sidebar: React.FC<ISidebar> = ({
   isOpen,
   closeSidebar,
+  links,
   className,
   ...sideBarProps
 }) => {
-  const externalLinkRegex = /^http/
   const { pathname } = useRouter()
+  const externalLinkRegex = /^http/
   return (
     <div
       className={`fixed left-0 top-0  h-screen w-full transform  transition duration-700 ease-in-out ${
@@ -33,7 +27,7 @@ const Sidebar: React.FC<ISidebar> = ({
       {...sideBarProps}
     >
       <div className="fixed right-0 flex h-full w-64 flex-col justify-between rounded-l-3xl bg-white py-32 px-8 shadow-2xl md:w-80">
-        {LINKS.map(({ title, href }) => {
+        {links.map(({ title, href }) => {
           if (externalLinkRegex.test(href)) {
             return (
               <a
