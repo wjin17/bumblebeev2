@@ -22,9 +22,9 @@ interface IMembershipHero extends React.ComponentPropsWithoutRef<'section'> {}
 
 const MembershipHero: React.FC<IMembershipHero> = () => {
   return (
-    <section className="mx-auto min-h-screen max-w-7xl snap-start items-center justify-between px-8 md:mt-0 md:flex">
+    <section className="mx-auto mt-24 max-w-7xl items-center justify-between px-8 md:mt-12 md:flex">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="px-0 md:p-8 lg:py-24">
+        <div className="lg:py-24">
           <div className="mx-auto max-w-xl">
             <h1 className="mb-4 max-w-md text-5xl font-bold">
               Memberships and Monthly Passes
@@ -40,7 +40,7 @@ const MembershipHero: React.FC<IMembershipHero> = () => {
             <div>
               <RoundLink
                 href="/#pricing"
-                className="bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
+                className="mt-4 bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
                 label="See pricing"
               />
             </div>

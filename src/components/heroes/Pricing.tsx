@@ -1,4 +1,3 @@
-import RoundButton from '../buttons/RoundButton'
 import RoundLink from '../buttons/RoundLink'
 import PricingCard from '../cards/Pricing'
 
@@ -10,8 +9,8 @@ const PricingHero: React.FC<IPricingHero> = () => {
       id="pricing"
       className="mx-auto max-w-7xl items-center justify-between px-8 pt-32"
     >
-      <h1 className="text-5xl font-bold text-amber-900 md:text-7xl">Pricing</h1>
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
+      <h1 className="mb-4 text-5xl font-bold text-amber-900">Pricing</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
         <PricingCard
           title="Open play"
           //description="Admissions is per child. Adults and siblings under 12 months are free. No reservations needed. Admissions is valid for full day access with re-entry. No restrictions on number of adults."
@@ -31,8 +30,8 @@ const PricingHero: React.FC<IPricingHero> = () => {
             </div>
             <RoundLink
               href="/visit"
-              label="More info"
-              className="mt-4 bg-amber-300 hover:bg-amber-200"
+              label="Visit"
+              className="mt-4 bg-amber-300 text-center hover:bg-amber-200 xl:w-3/4"
             />
           </div>
         </PricingCard>
@@ -52,7 +51,7 @@ const PricingHero: React.FC<IPricingHero> = () => {
             <RoundLink
               href="#location"
               label="Contact us"
-              className="mt-4 bg-amber-300 hover:bg-amber-200"
+              className="mt-4 bg-amber-300 text-center hover:bg-amber-200 xl:w-3/4"
             />
           </div>
         </PricingCard>
@@ -73,7 +72,7 @@ const PricingHero: React.FC<IPricingHero> = () => {
             <RoundLink
               href="#location"
               label="Contact us"
-              className="mt-4 bg-amber-300 hover:bg-amber-200"
+              className="mt-4 bg-amber-300 text-center hover:bg-amber-200 xl:w-3/4"
             />
           </div>
         </PricingCard>
@@ -85,7 +84,7 @@ const PricingHero: React.FC<IPricingHero> = () => {
             <RoundLink
               label="Learn more"
               href="/parties"
-              className="mt-8 bg-amber-300 hover:bg-amber-200"
+              className="mt-4 bg-amber-300 text-center hover:bg-amber-200 xl:w-3/4"
             />
           </div>
         </PricingCard>

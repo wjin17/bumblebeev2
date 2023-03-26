@@ -7,7 +7,7 @@ export interface IAboutHero {}
 
 const AboutHero: React.FC<IAboutHero> = () => {
   return (
-    <section className="mx-auto mt-40 min-h-screen max-w-7xl snap-start items-center justify-between px-8 md:mt-0 md:flex">
+    <section className="mx-auto mt-40 max-w-7xl items-center justify-between px-8 md:mt-0 md:flex">
       <div className="relative order-1 mt-16 mb-16 flex-1">
         <Image
           src={image}
@@ -29,7 +29,7 @@ const AboutHero: React.FC<IAboutHero> = () => {
         <div>
           <RoundLink
             href="#our-space"
-            className="bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
+            className="mt-4 bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
             label="Our space"
           />
         </div>

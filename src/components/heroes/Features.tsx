@@ -57,7 +57,7 @@ const FeaturesHero: React.FC<IFeatureHero> = () => {
   return (
     <section
       id="our-space"
-      className="mx-auto max-w-7xl snap-start items-center justify-between px-8 md:mt-0 md:flex"
+      className="mx-auto mt-24 max-w-7xl items-center justify-between px-8 md:mt-12 md:flex"
     >
       <div className="max-w-screen-xl py-8 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:items-center lg:gap-x-16">
@@ -72,7 +72,7 @@ const FeaturesHero: React.FC<IFeatureHero> = () => {
             </p>
             <RoundLink
               href="#open-play"
-              className="bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
+              className="mt-4 bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
               label="Open play"
             />
           </div>

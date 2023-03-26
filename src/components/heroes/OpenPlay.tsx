@@ -4,9 +4,9 @@ export interface IOpenPlayHero {}
 
 const OpenPlayHero: React.FC<IOpenPlayHero> = () => {
   return (
-    <section id="open-play" className="body-font text-gray-600">
+    <section className="mx-auto mt-16 max-w-7xl items-center justify-between px-8 md:mt-24 md:flex">
       <div className="container mx-auto px-5 py-24">
-        <div className="mb-12 flex w-full flex-col text-center">
+        <div className="flex w-full flex-col text-center">
           <h1 className="mb-4 text-5xl font-bold text-amber-900">Open play</h1>
           <p className="mx-auto mb-4 text-lg font-normal text-stone-600 md:max-w-lg">
             Come join us for Open Play! No reservations required, walk in any
@@ -25,7 +25,7 @@ const OpenPlayHero: React.FC<IOpenPlayHero> = () => {
           <RoundLink
             href="https://www.waiverfile.com/b/BumblebeePlayspace"
             label="Sign waiver"
-            className="mx-auto bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
+            className="mx-auto mt-4 bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
           />
         </div>
       </div>

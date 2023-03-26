@@ -121,7 +121,7 @@ const LocationHero: React.FC<ILocationHero> = () => {
                   onMouseOver={() => setInstructionsText('Click email to copy')}
                   onFocus={() => setInstructionsText('Click email to copy')}
                 >
-                  <h1 className="text-lg text-stone-700">
+                  <h1 className="text-md text-stone-700">
                     hello{'\u0040'}bumblebeeplayspace{'\u002e'}com
                   </h1>
                 </button>
