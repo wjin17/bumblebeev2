@@ -53,7 +53,7 @@ const SmallCells: React.FC<ISmallCells> = ({
     }
 
     setMonthRows(rows)
-  }, [startDate, endDate])
+  }, [currentDate])
 
   return (
     <div className="py-2">

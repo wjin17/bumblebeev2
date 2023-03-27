@@ -7,7 +7,7 @@ export interface IAboutHero {}
 
 const AboutHero: React.FC<IAboutHero> = () => {
   return (
-    <section className="mx-auto mt-40 max-w-7xl items-center justify-between px-8 md:mt-0 md:flex">
+    <section className="mx-auto mt-40 max-w-7xl items-center justify-between px-8 md:mt-28 md:flex xl:mt-0">
       <div className="relative order-1 mt-16 mb-16 flex-1">
         <Image
           src={image}

@@ -13,6 +13,7 @@ interface ITopbar extends React.ComponentPropsWithoutRef<'header'> {}
 const Topbar: React.FC<ITopbar> = ({ links, className }) => {
   const { pathname } = useRouter()
   const externalLinkRegex = /^http/
+  console.log(externalLinkRegex.test('/visit'))
   return (
     <header className={`relative flex h-24 items-center ${className}`}>
       <div className="ml-52 flex w-full justify-between">
