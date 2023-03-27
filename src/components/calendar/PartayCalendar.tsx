@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
+import { IoMdClose } from 'react-icons/io'
 import { endOfWeek, format, startOfWeek } from 'date-fns'
 import { addMonths, endOfMonth, startOfMonth, subMonths } from 'date-fns'
 
@@ -94,7 +95,14 @@ const PartayCalendar: React.FC<IPartayCalendar> = () => {
                 showModal ? 'opacity-100' : 'invisible opacity-0'
               }`}
             >
-              <h1 className="text-xl font-semibold">{formattedSelectedDay}</h1>
+              <div className="flex items-center justify-between">
+                <h1 className="text-xl font-semibold">
+                  {formattedSelectedDay}
+                </h1>
+                <button onClick={handleBlur}>
+                  <IoMdClose size={30} className="text-stone-400" />
+                </button>
+              </div>
               <div className="flex h-full flex-col justify-center">
                 <h1 className="text-md font-semibold">9AM - 1PM</h1>
                 <RenderAvailability

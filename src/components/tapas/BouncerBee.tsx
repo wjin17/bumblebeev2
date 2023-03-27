@@ -3,7 +3,7 @@ import Image from 'next/image'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
-import { endOfDay, format, startOfDay } from 'date-fns'
+import { endOfDay, format, getHours, startOfDay } from 'date-fns'
 
 import SpeechBubble from '../../../public/assets/speech-bubble.png'
 import Logo from '../../../public/bumblebee_logo.png'
@@ -41,6 +41,8 @@ const BouncerBee = () => {
   const available = isMorning ? morningAvailable : afternoonAvailable
   const hideNoti = available || (!available && !open)
 
+  const isClosed = getHours(now) < 9 || getHours(now) > 17
+
   /**
    * truth table lmao
    * a | o | hide
@@ -50,7 +52,7 @@ const BouncerBee = () => {
    * 1   1    1
    */
 
-  if (isLoading || hideNoti) return null
+  if (isLoading || hideNoti || isClosed) return null
   return (
     <div className="fixed bottom-8 right-4 z-50 flex">
       <div className="flex flex-col items-center justify-center">

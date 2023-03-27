@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
+import { IoMdClose } from 'react-icons/io'
 import {
   addMonths,
   endOfMonth,
@@ -81,9 +82,14 @@ const EventsCalendar: React.FC<IEventsCalendar> = () => {
                 showModal ? 'opacity-100' : 'invisible opacity-0'
               }`}
             >
-              <h1 className="mb-8 text-3xl font-semibold text-amber-900">
-                {formattedSelectedDay}
-              </h1>
+              <div className="mb-8 flex items-center justify-between ">
+                <h1 className="text-3xl font-semibold text-amber-900">
+                  {formattedSelectedDay}
+                </h1>
+                <button onClick={handleBlur}>
+                  <IoMdClose size={36} className="text-stone-300" />
+                </button>
+              </div>
               <div className="h-full">
                 {events[formattedSelectedDay]!.length ? (
                   events[formattedSelectedDay]!.map((event, index) => {

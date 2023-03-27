@@ -71,7 +71,7 @@ const PartyInfoHero: React.FC<IPartyInfoHero> = () => {
           <h1 className="mb-8 text-3xl font-bold lg:text-5xl">Packages</h1>
           <div className="flex flex-col lg:flex-row">
             <div className="w-full lg:w-7/12 lg:pr-8">
-              <div className="xs:justify-start mb-4 flex justify-between">
+              <div className="mb-4 flex justify-between sm:justify-start">
                 {Packages.map(({ name }, index) => (
                   <button
                     key={name}

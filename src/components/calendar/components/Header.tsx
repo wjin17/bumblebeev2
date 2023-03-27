@@ -34,7 +34,7 @@ const CalendarHeader: React.FC<ICalendarHeader> = ({
         </h1>
         <h1
           className={`inline-block text-2xl font-medium ${
-            isSmall ? '' : 'md:text-stone-400'
+            isSmall ? '' : 'md:text-stone-600'
           }`}
         >
           {format(currentDate, 'yyyy')}
