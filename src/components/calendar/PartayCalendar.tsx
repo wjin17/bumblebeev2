@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { format } from 'date-fns'
+import { endOfWeek, format, startOfWeek } from 'date-fns'
 import { addMonths, endOfMonth, startOfMonth, subMonths } from 'date-fns'
 
 import CalendarHeader from './components/Header'
@@ -27,10 +27,12 @@ const PartayCalendar: React.FC<IPartayCalendar> = () => {
 
   const monthStart = startOfMonth(currentDate)
   const monthEnd = endOfMonth(monthStart)
+  const weekStart = startOfWeek(monthStart)
+  const weekEnd = endOfWeek(monthEnd)
 
   const { data: availabilities } = useQuery({
-    queryKey: ['birthday-parties', monthStart, monthEnd],
-    queryFn: () => fetchBirthdayParties(monthStart, monthEnd),
+    queryKey: ['birthday-parties', weekStart, weekEnd],
+    queryFn: () => fetchBirthdayParties(weekStart, weekEnd),
   })
 
   function handleReverseMonth() {

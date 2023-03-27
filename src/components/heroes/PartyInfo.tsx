@@ -1,12 +1,46 @@
 //import PricingCard from "../../cards/pricing/PricingCard";
 
-interface IPartyInfoHero {}
-interface IPartyPackageCard {
-  title: string
-  price: string
-}
+import { useState } from 'react'
+import RoundLink from '../buttons/RoundLink'
+import PartayCalendar from '../calendar/PartayCalendar'
+import PricingCard from '../cards/Pricing'
 
-interface IPartyPackageCard extends React.ComponentPropsWithoutRef<'div'> {}
+interface IPartyInfoHero {}
+
+const Packages = [
+  {
+    name: 'Mini',
+    price: '$400',
+    duration: '2hrs',
+    times: '9:30am-1pm or 2:00pm-5pm',
+    details: [
+      'Admissions for 10 children ages 1-10 excluding the guest of honor.',
+      '2 hours of exclusive use of our playspace, including set up and clean up time.',
+    ],
+  },
+  {
+    name: 'Standard',
+    price: '$650',
+    duration: '4hrs',
+    times: '9am-1pm or 2:00pm-6pm',
+    details: [
+      'Admissions for 15 children ages 1-10 excluding the guest of honor.',
+      '4 hours of exclusive use of our playspace, including set up and clean up time.',
+      '2 of our amazing staff members to help with set up, party time and clean up.',
+    ],
+  },
+  {
+    name: 'Full day',
+    price: '$1,100',
+    duration: '7hrs',
+    times: '10am-5pm',
+    details: [
+      'Admissions for 15 children ages 1-10 excluding the guest of honor.',
+      '4 hours of exclusive use of our playspace, including set up and clean up time.',
+      '2 of our amazing staff members to help with set up, party time and clean up.',
+    ],
+  },
+]
 
 const CommonPackage = [
   'Backdrop stands, tablecloths, plates and utensils are available upon request.',
@@ -14,127 +48,79 @@ const CommonPackage = [
   'You will have to provide food and refreshments, decorations and/or party favors, platters and serveware.',
 ]
 
-const BasePackage = [
-  'Admissions for 15 children ages 1-10 excluding the guest of honor.',
-  '4 hours of exclusive use of our playspace, including set up and clean up time.',
-  'Available party times are 9am-1pm (you can come in starting at 9am to set up and all party materials must be cleaned up by 1pm) and 2pm-6pm (you can come in starting at 2pm to set up and all party materials must be cleaned up by 6pm).',
-  '2 of our amazing staff members to help with set up, party time and clean up.',
-  ...CommonPackage,
-]
-
-const MiniPackage = [
-  'Admissions for 10 children ages 1-10 excluding the guest of honor.',
-  '2 hours of exclusive use of our playspace and 30 minutes .',
-  'Available party times are a 2.5hr time slot between 9:30am-1pm and 2:00pm-5pm',
-  //'2 backdrop stands for decoration if needed.',
-  ...CommonPackage,
-]
-
-const FullDayPackage = [
-  'Admissions for 15 children ages 1-10 excluding the guest of honor.',
-  '4 hours of exclusive use of our playspace, including set up and clean up time.',
-  'Available times are 10am-5pm',
-  '2 of our amazing staff members to help with set up, party time and clean up.',
-  ...CommonPackage,
-]
-
-const PartyPackageCard: React.FC<IPartyPackageCard> = ({
-  title,
-  price,
-  children,
-}) => {
-  return (
-    <div className=" flex-1 p-4">
-      <div className="flex h-full w-full flex-col rounded-3xl bg-white p-8">
-        <h1 className="mb-4 text-4xl font-semibold text-amber-900">{title}</h1>
-        <h1 className="mb-8 text-xl text-neutral-600">starts at ${price}</h1>
-        <div className="font-medium">{children}</div>
-      </div>
-    </div>
-  )
-}
+type PackageTypes = 'Mini' | 'Standard' | 'Full day'
 
 const PartyInfoHero: React.FC<IPartyInfoHero> = () => {
+  const [currentPackage, setCurrentPackage] = useState<PackageTypes>('Standard')
+  const activePackage = Packages.find(({ name }) => name === currentPackage)
   return (
-    <div className="mx-auto flex min-h-screen max-w-7xl flex-col px-8">
+    <section className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-8">
       <div className="mx-auto mt-8 max-w-3xl">
         <div className="mt-4">
-          <h1 className="mb-8 text-5xl font-bold md:text-7xl">
+          <h1 className="mb-8 text-5xl font-bold lg:text-7xl">
             Party at Bumblebee!
           </h1>
-          {/* <p className="max-w-sm text-lg text-neutral-700">
-            We would love to host a party for your little one!
-          </p> */}
         </div>
-        {/*   <h1 className="mb-6 text-6xl text-amber-900">Packages</h1>
-        <div className="mb-4 md:flex">
-          <PartyPackageCard title="Base Package" price="550">
-            {BasePackage.map((details, index) => {
-              return (
-                <p key={index} className="text-md mb-4">
-                  {details}
-                </p>
-              );
-            })}
-          </PartyPackageCard>
-          <PartyPackageCard title="Mini Package" price="400">
-            {MiniPackage.map((details, index) => {
-              return (
-                <p key={index} className="text-md mb-4">
-                  {details}
-                </p>
-              );
-            })}
-          </PartyPackageCard>
+        <div className="mx-auto lg:w-1/2">
+          <h1 className="mb-8 text-center text-3xl font-bold lg:text-5xl">
+            Current schedule
+          </h1>
+          <PartayCalendar />
         </div>
-        <h1 className="mx-4 mb-4 text-2xl text-amber-900">Additional info</h1>
-        {CommonPackage.map((details, index) => (
-          <p key={index} className="text-md mx-4 mb-6">
-            {details}
-          </p>
-        ))} */}
-
-        <div className="mb-8">
-          <h1 className="text-4xl text-amber-900">Base</h1>
-          <p className="mb-4 text-xl text-amber-900">starts at $650</p>
-          <ul className="list-inside list-disc">
-            {BasePackage.map((details, index) => {
-              return (
-                <li key={index} className="mb-2 text-lg">
-                  {details}
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-        <div className="mb-8">
-          <h1 className="text-4xl text-amber-900">Full Day Party</h1>
-          <p className="mb-4 text-xl text-amber-900">starts at $1,100</p>
-          <ul className="list-inside list-disc">
-            {FullDayPackage.map((details, index) => {
-              return (
-                <li key={index} className="mb-2 text-lg">
-                  {details}
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-        <div className="mb-8">
-          <h1 className="text-4xl text-amber-900">Mini Party</h1>
-          <p className="mb-4 text-xl text-amber-900">starts at $400</p>
-          <ul className="list-inside list-disc">
-            {MiniPackage.map((details, index) => {
-              return (
-                <li key={index} className="mb-2 text-lg">
-                  {details}
-                </li>
-              )
-            })}
+        <div className="mt-24">
+          <h1 className="mb-8 text-3xl font-bold lg:text-5xl">Packages</h1>
+          <div className="flex flex-col lg:flex-row">
+            <div className="w-full lg:w-7/12 lg:pr-8">
+              <div className="xs:justify-start mb-4 flex justify-between">
+                {Packages.map(({ name }, index) => (
+                  <button
+                    key={name}
+                    onClick={() => setCurrentPackage(name as PackageTypes)}
+                    className={`rounded-lg border-2 border-amber-900 py-2 px-4 shadow-lg ${
+                      name === currentPackage ? 'bg-amber-200' : 'bg-amber-50'
+                    } ${index !== 0 ? 'sm:ml-2' : ''}`}
+                  >
+                    <h1 className="text-lg lg:text-xl">{name}</h1>
+                  </button>
+                ))}
+              </div>
+              <h1 className="text-xl lg:text-3xl">Details</h1>
+              <h1 className="lg:text-xl">Time slot</h1>
+              <h1 className="mb-2 lg:text-xl">{activePackage?.times}</h1>
+              <ul className="ml-4 list-outside list-disc">
+                {activePackage?.details.map((detail) => (
+                  <li key={detail} className="mb-2 text-stone-600">
+                    {detail}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <PricingCard title={`${currentPackage} party`}>
+              <h1>Total: {activePackage?.duration}</h1>
+              <div className="mt-auto font-medium">
+                <h1 className="mt-auto text-lg">Starts at</h1>
+                <h1 className="text-3xl font-bold">{activePackage?.price}</h1>
+                <RoundLink
+                  href="/#contact"
+                  label="Call to book"
+                  className="mt-8 bg-amber-300 text-center hover:bg-amber-200"
+                />
+              </div>
+            </PricingCard>
+          </div>
+          <h1 className="mb-8 mt-8 text-xl font-bold lg:text-3xl">
+            Additional info:
+          </h1>
+          <ul className="ml-4 list-outside list-disc">
+            {CommonPackage.map((detail) => (
+              <li key={detail} className="mb-2 text-stone-600">
+                {detail}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

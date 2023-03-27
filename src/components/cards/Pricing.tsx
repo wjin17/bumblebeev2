@@ -12,7 +12,7 @@ const PricingCard: React.FC<IPricingCard> = ({
 }) => {
   return (
     <div className="flex-1 p-4">
-      <div className="flex h-full w-full flex-col rounded-3xl bg-white p-8 shadow-xl">
+      <div className="flex h-full w-full flex-col rounded-3xl bg-amber-50 p-8 shadow-xl">
         <div>
           <h1 className="text-2xl">{title}</h1>
           <p className="mt-4 text-sm text-neutral-500">{description}</p>

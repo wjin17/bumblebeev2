@@ -113,7 +113,7 @@ const LargeCells: React.FC<ILargeCells> = ({
     }
 
     setMonthRows(rows)
-  }, [currentDate])
+  }, [startDate, endDate])
 
   return (
     <div className="py-2 px-2">

@@ -13,7 +13,7 @@ const Parties = () => {
           key="desc"
         />
       </Head>
-      <main className="min-h-screen bg-amber-100 lg:snap-y">
+      <main className="min-h-screen w-full bg-amber-100">
         <PartyIntroHero />
         <PartyInfoHero />
       </main>

@@ -53,7 +53,7 @@ const SmallCells: React.FC<ISmallCells> = ({
     }
 
     setMonthRows(rows)
-  }, [currentDate])
+  }, [startDate, endDate])
 
   return (
     <div className="py-2">
@@ -65,10 +65,7 @@ const SmallCells: React.FC<ISmallCells> = ({
               const hasOpening =
                 availabilities[date]?.morningAvailable ||
                 availabilities[date]?.afternoonAvailable
-              const validDay =
-                isSameMonth(day, monthStart) &&
-                isWeekend(day) &&
-                isAfter(day, new Date())
+              const validDay = isWeekend(day) && isAfter(day, new Date())
               return (
                 <div
                   key={day.toString()}
@@ -78,20 +75,14 @@ const SmallCells: React.FC<ISmallCells> = ({
                   <button
                     className={`h-10 w-10 rounded-full text-center ${
                       hasOpening && validDay
-                        ? 'text-black hover:bg-amber-300'
+                        ? 'text-stone-600 hover:bg-amber-300'
                         : 'text-neutral-300'
                     } ${isSameDay(day, selectedDate) ? 'bg-amber-200' : ''}`}
                     onClick={() => {
                       onSelectDay(day)
                       onFocus()
                     }}
-                    disabled={
-                      !isSameMonth(day, monthStart) ||
-                      !isWeekend(day) ||
-                      !hasOpening ||
-                      !validDay
-                    }
-                    // isSameDay(day, selectedDate)
+                    disabled={!isWeekend(day) || !hasOpening || !validDay}
                   >
                     <p>{format(day, dayOfMonthFormat)}</p>
                   </button>

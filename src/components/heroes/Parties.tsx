@@ -16,7 +16,7 @@ const PartyHero: React.FC<IPartyHero> = () => {
     >
       <div className="my-auto w-full pr-0 text-center md:w-1/2 md:pr-16 md:text-start lg:w-2/5 lg:pr-0">
         <h1 className="mb-4 text-5xl font-bold">We love to party! 🐝</h1>
-        <p className="mx-auto mb-4 px-8 text-lg font-normal text-stone-600 md:max-w-lg">
+        <p className="mx-auto mb-4 px-8 text-lg font-normal text-stone-600 sm:px-0 md:max-w-lg">
           Host your little one&apos;s next birthday party at Bumblebee! Check
           the calendar for availabilities.
         </p>
