@@ -96,10 +96,10 @@ const PartyInfoHero: React.FC<IPartyInfoHero> = () => {
               </ul>
             </div>
             <PricingCard title={`${currentPackage} party`}>
-              <h1>Total: {activePackage?.duration}</h1>
               <div className="mt-auto font-medium">
                 <h1 className="mt-auto text-lg">Starts at</h1>
                 <h1 className="text-3xl font-bold">{activePackage?.price}</h1>
+                <h1>Total: {activePackage?.duration}</h1>
                 <RoundLink
                   href="/#contact"
                   label="Call to book"
