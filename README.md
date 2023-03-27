@@ -20,6 +20,7 @@ Same as before
 ```bash
 PUBLIC_GOOGLE_CAL_ID=*****************
 GOOGLE_CAL_KEY=*****************
+TZ=America/Los_Angeles # <-- important!!
 ```
 
 Useful scripts

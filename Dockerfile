@@ -1,5 +1,6 @@
 FROM node:18-alpine as base
 ENV CONTAINER=true
+ENV TZ="America/Los_Angeles"
 WORKDIR /usr/src/app
 COPY package*.json ./
 
