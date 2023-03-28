@@ -26,7 +26,7 @@ const Sidebar: React.FC<ISidebar> = ({
       onClick={closeSidebar}
       {...sideBarProps}
     >
-      <div className="fixed right-0 flex h-full w-64 flex-col justify-between rounded-l-3xl bg-white py-32 px-8 shadow-2xl md:w-80">
+      <div className="fixed right-0 flex h-full w-64 flex-col justify-between rounded-l-3xl bg-amber-50 py-32 px-8 shadow-2xl md:w-80">
         {links.map(({ title, href }) =>
           externalLinkRegex.test(href) ? (
             <a
@@ -67,6 +67,6 @@ const Sidebar: React.FC<ISidebar> = ({
 
 export default Sidebar
 
-// className={`fixed right-0 top-0 flex h-screen w-64 transform flex-col justify-between rounded-l-3xl bg-white py-32 px-8 shadow-2xl transition duration-500 ease-in-out md:w-80 ${
+// className={`fixed right-0 top-0 flex h-screen w-64 transform flex-col justify-between rounded-l-3xl bg-amber-50 py-32 px-8 shadow-2xl transition duration-500 ease-in-out md:w-80 ${
 //   isOpen ? "translate-x-0" : "translate-x-64 md:translate-x-80"
 // } ${className}`}

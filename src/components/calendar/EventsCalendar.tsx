@@ -78,7 +78,7 @@ const EventsCalendar: React.FC<IEventsCalendar> = () => {
           />
           {events[formattedSelectedDay] && (
             <div
-              className={`absolute top-16 left-1/2 flex min-h-[80%] w-5/6 -translate-x-1/2 flex-col rounded-3xl bg-white p-8 shadow-2xl transition-all md:max-w-sm ${
+              className={`absolute top-16 left-1/2 flex min-h-[80%] w-5/6 -translate-x-1/2 flex-col rounded-3xl bg-amber-50 p-8 shadow-2xl transition-all md:max-w-sm ${
                 showModal ? 'opacity-100' : 'invisible opacity-0'
               }`}
             >

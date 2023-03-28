@@ -44,7 +44,7 @@ interface IFeatureItem {
 
 const FeatureItem: React.FC<IFeatureItem> = ({ name, icon }) => {
   return (
-    <div className="block rounded-xl bg-white p-4 shadow-md">
+    <div className="block rounded-xl bg-amber-50 p-4 shadow-md">
       <span className="inline-block rounded-lg bg-stone-100 p-3 text-stone-700">
         {icon}
       </span>
@@ -72,7 +72,7 @@ const FeaturesHero: React.FC<IFeatureHero> = () => {
             </p>
             <RoundLink
               href="#open-play"
-              className="mt-4 bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
+              className="mt-4 bg-amber-50 px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
               label="Open play"
             />
           </div>

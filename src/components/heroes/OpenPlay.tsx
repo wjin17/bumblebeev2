@@ -25,7 +25,7 @@ const OpenPlayHero: React.FC<IOpenPlayHero> = () => {
           <RoundLink
             href="https://www.waiverfile.com/b/BumblebeePlayspace"
             label="Sign waiver"
-            className="mx-auto mt-4 bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
+            className="mx-auto mt-4 bg-amber-50 px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
           />
         </div>
       </div>

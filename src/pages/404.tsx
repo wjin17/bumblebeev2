@@ -20,7 +20,7 @@ const NotFound = () => {
         <RoundLink
           href="/"
           label="Back to home"
-          className="mx-auto bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
+          className="mx-auto bg-amber-50 px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
         />
       </center>
     </div>

@@ -62,7 +62,7 @@ const BouncerBee = () => {
         >
           <AiOutlineCloseCircle
             size={48}
-            className="rounded-full bg-white shadow-lg"
+            className="rounded-full bg-amber-50 shadow-lg"
           />
         </button>
         <div className="relative right-[7.5rem] top-10 flex">

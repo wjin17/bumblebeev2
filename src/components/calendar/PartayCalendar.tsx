@@ -91,7 +91,7 @@ const PartayCalendar: React.FC<IPartayCalendar> = () => {
           />
           {availabilities[formattedSelectedDay] && (
             <div
-              className={`absolute top-8 left-1/2 flex h-64 w-64 -translate-x-1/2 flex-col rounded-3xl bg-white p-8 shadow-2xl transition-all ${
+              className={`absolute top-8 left-1/2 flex h-64 w-64 -translate-x-1/2 flex-col rounded-3xl bg-amber-50 p-8 shadow-2xl transition-all ${
                 showModal ? 'opacity-100' : 'invisible opacity-0'
               }`}
             >

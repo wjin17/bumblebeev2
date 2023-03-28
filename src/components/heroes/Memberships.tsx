@@ -40,7 +40,7 @@ const MembershipHero: React.FC<IMembershipHero> = () => {
             <div>
               <RoundLink
                 href="/#pricing"
-                className="mt-4 bg-white px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
+                className="mt-4 bg-amber-50 px-12 py-4 text-lg font-bold shadow-lg hover:bg-amber-200"
                 label="See pricing"
               />
             </div>
