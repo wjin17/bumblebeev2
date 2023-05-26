@@ -23,7 +23,7 @@ const BouncerBee = () => {
 
   const now = new Date()
   const today = format(now, 'MMM d, yyyy')
-  const isMorning = parseInt(format(now, 'H')) < 12
+  const militaryNow = format(now, 'kk:mm')
   const dayStart = startOfDay(now)
   const dayEnd = endOfDay(now)
 
@@ -32,13 +32,21 @@ const BouncerBee = () => {
     queryFn: () => fetchBirthdayParties(dayStart, dayEnd),
   })
 
-  const morningAvailable =
-    availabilities && availabilities[today].morningAvailable
+  console.log(availabilities)
 
-  const afternoonAvailable =
-    availabilities && availabilities[today].afternoonAvailable
+  let available = false
 
-  const available = isMorning ? morningAvailable : afternoonAvailable
+  if (availabilities) {
+    for (const slots of Object.values(availabilities[today] ?? {})) {
+      const currentSlots = slots.filter(
+        (slot) => militaryNow > slot.start && militaryNow < slot.end
+      )
+      if (currentSlots.some((slot) => slot.available)) {
+        available = true
+      }
+    }
+  }
+
   const hideNoti = available || (!available && !open)
 
   const isClosed = getHours(now) < 9 || getHours(now) > 17
