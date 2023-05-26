@@ -78,7 +78,7 @@ const PricingHero: React.FC<IPricingHero> = () => {
         </PricingCard>
         <PricingCard
           title="Parties"
-          description="Starts at $400 for 10 children and includes exclusive use of our space for 2.5 hours. Other packages available as well!"
+          description="Starts at $550 for 10 children and includes exclusive use of our space for 2 hours. Other packages available as well!"
         >
           <div className="mt-auto font-medium">
             <RoundLink

@@ -31,7 +31,7 @@ const MembershipHero: React.FC<IMembershipHero> = () => {
             </h1>
             <p className="mb-4 max-w-md text-lg font-normal text-stone-600">
               Memberships are charged every month and are valid for entry to any
-              Open Play time. Members also receive 20% off party packages.
+              Open Play time. Members also receive 10% off party packages.
             </p>
             <p className="mb-4 max-w-md text-lg font-normal text-stone-600">
               Monthly pass members have access to unlimited Open Play visits for

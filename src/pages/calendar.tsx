@@ -15,7 +15,7 @@ const Events = () => {
       </Head>
       <main>
         <section className="mx-auto my-16 flex min-h-screen max-w-7xl flex-col items-center px-8">
-          <h1 className="mb-8 text-5xl font-bold md:text-7xl">Calendar</h1>
+          <h1 className="mt-8 mb-8 text-5xl font-bold md:text-7xl">Calendar</h1>
           <div className="mb-16 w-full">
             <EventsCalendar />
           </div>

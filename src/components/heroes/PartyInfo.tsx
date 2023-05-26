@@ -10,9 +10,9 @@ interface IPartyInfoHero {}
 const Packages = [
   {
     name: 'Mini',
-    price: '$400',
-    duration: '2hrs',
-    times: '9:30am-1pm or 2:00pm-5pm',
+    price: '$550',
+    duration: '3hrs',
+    times: '10am-12pm | 1pm-3pm | 5pm-7pm',
     details: [
       'Admissions for 10 children ages 1-10 excluding the guest of honor.',
       '2 hours of exclusive use of our playspace, including set up and clean up time.',
@@ -21,8 +21,8 @@ const Packages = [
   {
     name: 'Standard',
     price: '$650',
-    duration: '4hrs',
-    times: '9am-1pm or 2:00pm-6pm',
+    duration: '3hrs',
+    times: '9:30am-12:30pm | 1:15pm-4:15pm | 5pm-8pm',
     details: [
       'Admissions for 15 children ages 1-10 excluding the guest of honor.',
       '4 hours of exclusive use of our playspace, including set up and clean up time.',
@@ -85,7 +85,7 @@ const PartyInfoHero: React.FC<IPartyInfoHero> = () => {
                 ))}
               </div>
               <h1 className="text-xl lg:text-3xl">Details</h1>
-              <h1 className="lg:text-xl">Time slot</h1>
+              <h1 className="lg:text-xl">Time slots</h1>
               <h1 className="mb-2 lg:text-xl">{activePackage?.times}</h1>
               <ul className="ml-4 list-outside list-disc">
                 {activePackage?.details.map((detail) => (
