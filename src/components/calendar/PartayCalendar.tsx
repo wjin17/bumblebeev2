@@ -11,6 +11,12 @@ import SmallCells from './components/SmallCells'
 
 export interface IPartayCalendar {}
 
+function makeNormalPeopleTime(time: string) {
+  const timeArr = time.split(':') // convert to array
+  const hours = +timeArr[0]
+  return `${hours % 12 || 12}:${timeArr[1]}${hours < 12 ? 'am' : 'pm'}`
+}
+
 async function fetchBirthdayParties(start: Date, end: Date) {
   const { data } = await axios.get<Availabilities>('/api/birthday-parties', {
     params: {
@@ -25,6 +31,7 @@ const PartayCalendar: React.FC<IPartayCalendar> = () => {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [showModal, setShowModal] = useState(false)
+  const [selectedPackage, setPackage] = useState<Package>('Mini')
 
   const monthStart = startOfMonth(currentDate)
   const monthEnd = endOfMonth(monthStart)
@@ -44,8 +51,6 @@ const PartayCalendar: React.FC<IPartayCalendar> = () => {
   }
   function handleSelectDay(day: Date) {
     setSelectedDate(day)
-  }
-  function handleFocus() {
     setShowModal(true)
   }
   function handleBlur() {
@@ -55,23 +60,51 @@ const PartayCalendar: React.FC<IPartayCalendar> = () => {
   const dayMonthYearFormat = 'MMM d, yyyy'
   const formattedSelectedDay = format(selectedDate, dayMonthYearFormat)
 
-  const RenderAvailability = ({ available }: { available: boolean }) => {
-    if (available)
-      return (
-        <h1 className="mt-2 mb-4 mr-auto rounded-3xl bg-emerald-400 px-4 py-1 font-medium">
-          Available
-        </h1>
-      )
-    else
-      return (
-        <h1 className="mt-2 mb-4 mr-auto rounded-3xl bg-rose-400 px-4 py-1 font-medium">
-          Unavailable
-        </h1>
-      )
+  const RenderAvailability = ({ schedule }: { schedule: DaySchedule }) => {
+    return (
+      <div>
+        <div className="my-4 flex flex-wrap items-center gap-1">
+          {Object.keys(schedule).map((packageType) => (
+            <button
+              key={packageType}
+              className={`rounded-full border-2 border-amber-200 px-3 py-2 text-sm ${
+                selectedPackage === packageType ? 'bg-amber-200' : ''
+              }`}
+              onClick={() => setPackage(packageType as Package)}
+            >
+              <h1>{packageType}</h1>
+            </button>
+          ))}
+        </div>
+        <div>
+          {schedule[selectedPackage].map((slot) => {
+            return (
+              <div key={slot.start}>
+                <h1 className="font-semibold">
+                  {makeNormalPeopleTime(slot.start)}-
+                  {makeNormalPeopleTime(slot.end)}
+                </h1>
+                <div className="flex">
+                  {slot.available ? (
+                    <h1 className="mt-2 mb-4 mr-auto rounded-3xl bg-emerald-400 px-4 py-1 font-medium">
+                      Available
+                    </h1>
+                  ) : (
+                    <h1 className="mt-2 mb-4 mr-auto rounded-3xl bg-rose-400 px-4 py-1 font-medium">
+                      Unavailable
+                    </h1>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div className="relative mx-auto  rounded-3xl shadow-2xl">
+    <div className="relative mx-auto w-full rounded-3xl shadow-2xl">
       <CalendarHeader
         currentDate={currentDate}
         size="sm"
@@ -86,12 +119,10 @@ const PartayCalendar: React.FC<IPartayCalendar> = () => {
             selectedDate={selectedDate}
             onSelectDay={handleSelectDay}
             availabilities={availabilities}
-            onFocus={handleFocus}
-            onBlur={handleBlur}
           />
           {availabilities[formattedSelectedDay] && (
             <div
-              className={`absolute top-8 left-1/2 flex h-64 w-64 -translate-x-1/2 flex-col rounded-3xl bg-amber-50 p-8 shadow-2xl transition-all ${
+              className={`absolute top-8 left-1/2 flex w-full max-w-[95%] -translate-x-1/2 flex-col rounded-3xl bg-amber-50 p-6 shadow-2xl transition-all ${
                 showModal ? 'opacity-100' : 'invisible opacity-0'
               }`}
             >
@@ -103,18 +134,9 @@ const PartayCalendar: React.FC<IPartayCalendar> = () => {
                   <IoMdClose size={30} className="text-stone-400" />
                 </button>
               </div>
-              <div className="flex h-full flex-col justify-center">
-                <h1 className="text-md font-semibold">9AM - 1PM</h1>
+              <div className="flex h-full flex-col">
                 <RenderAvailability
-                  available={
-                    availabilities[formattedSelectedDay].morningAvailable
-                  }
-                />
-                <h1 className="text-md font-semibold">2PM - 6PM</h1>
-                <RenderAvailability
-                  available={
-                    availabilities[formattedSelectedDay]!.afternoonAvailable
-                  }
+                  schedule={availabilities[formattedSelectedDay]}
                 />
               </div>
             </div>

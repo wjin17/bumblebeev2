@@ -3,7 +3,6 @@ import {
   endOfMonth,
   endOfWeek,
   isSameDay,
-  isSameMonth,
   startOfMonth,
   startOfWeek,
   format,
@@ -17,8 +16,6 @@ interface ISmallCells {
   selectedDate: Date
   onSelectDay: (day: Date) => void
   availabilities: Availabilities
-  onFocus: () => void
-  onBlur: () => void
 }
 
 const SmallCells: React.FC<ISmallCells> = ({
@@ -26,8 +23,6 @@ const SmallCells: React.FC<ISmallCells> = ({
   selectedDate,
   onSelectDay,
   availabilities,
-  onFocus,
-  onBlur,
 }) => {
   const [monthRows, setMonthRows] = useState<Date[][]>([])
   const monthStart = startOfMonth(currentDate)
@@ -62,15 +57,14 @@ const SmallCells: React.FC<ISmallCells> = ({
           <div key={index} className="flex justify-between py-1 px-1">
             {week.map((day) => {
               const date = format(day, dayMonthYearFormat)
-              const hasOpening =
-                availabilities[date]?.morningAvailable ||
-                availabilities[date]?.afternoonAvailable
+              const hasOpening = Object.values(availabilities[date] ?? {}).some(
+                (slots) => slots.some((slot) => slot.available)
+              )
               const validDay = isWeekend(day) && isAfter(day, new Date())
               return (
                 <div
                   key={day.toString()}
                   className="flex w-10 items-center justify-center"
-                  onBlur={onBlur}
                 >
                   <button
                     className={`h-10 w-10 rounded-full text-center ${
@@ -80,7 +74,6 @@ const SmallCells: React.FC<ISmallCells> = ({
                     } ${isSameDay(day, selectedDate) ? 'bg-amber-200' : ''}`}
                     onClick={() => {
                       onSelectDay(day)
-                      onFocus()
                     }}
                     disabled={!isWeekend(day) || !hasOpening || !validDay}
                   >

@@ -22,6 +22,7 @@ export function formatPartiesFromGoogle(
 ) {
   const timeZone = 'America/Los_Angeles'
   const dayMonthYearFormat = 'MMM d, yyyy'
+  const militaryFormat = 'kk:mm'
 
   const unavailableTimes = events.filter((event) =>
     event.summary.includes('Closed')
@@ -33,8 +34,17 @@ export function formatPartiesFromGoogle(
   for (const day of eachDayOfInterval({ start, end })) {
     const dayWithTZ = utcToZonedTime(day, timeZone)
     days[formatWithTZ(dayWithTZ, dayMonthYearFormat)] = {
-      morningAvailable: true,
-      afternoonAvailable: true,
+      Mini: [
+        { start: '10:00', end: '12:00', available: true },
+        { start: '13:00', end: '15:00', available: true },
+        { start: '17:00', end: '19:00', available: true },
+      ],
+      Standard: [
+        { start: '09:30', end: '12:30', available: true },
+        { start: '13:15', end: '16:15', available: true },
+        { start: '17:00', end: '20:00', available: true },
+      ],
+      'Full day': [{ start: '10:00', end: '17:00', available: true }],
     }
   }
 
@@ -43,16 +53,21 @@ export function formatPartiesFromGoogle(
     const endTime = (time.end as GoogleCalendarItemDateTime).dateTime
     const startWithTZ = utcToZonedTime(startTime, timeZone)
     const endWithTZ = utcToZonedTime(endTime, timeZone)
+
+    const militaryStart = formatWithTZ(startWithTZ, militaryFormat)
+    const militaryEnd = formatWithTZ(endWithTZ, militaryFormat)
     const date = formatWithTZ(startWithTZ, dayMonthYearFormat)
 
-    if (getHours(startWithTZ) < 13) {
-      days[date]!['morningAvailable'] = false
-    }
-    if (getHours(startWithTZ) >= 13) {
-      days[date]!['afternoonAvailable'] = false
-    }
-    if (getHours(endWithTZ) >= 13) {
-      days[date]!['afternoonAvailable'] = false
+    const schedule = days[date]!
+
+    for (const key in schedule) {
+      const day = schedule[key as Package]!
+      day.forEach((slot) => {
+        const overlap = militaryEnd > slot.start && slot.end > militaryStart
+        if (overlap) {
+          slot.available = false
+        }
+      })
     }
   }
 

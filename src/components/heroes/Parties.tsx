@@ -50,7 +50,7 @@ const PartyHero: React.FC<IPartyHero> = () => {
           />
         </div>
       </div>
-      <div className="mx-auto mt-6 flex w-full p-8 md:mt-0 md:w-1/2 lg:w-3/6">
+      <div className="mx-auto mt-6 flex w-full p-8 md:mt-0 md:w-1/2">
         <PartayCalendar />
       </div>
       <div ref={ref} />

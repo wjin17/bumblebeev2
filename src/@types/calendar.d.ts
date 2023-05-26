@@ -1,11 +1,18 @@
-type DaySchedule = {
-  morningAvailable: boolean
-  afternoonAvailable: boolean
+type Package = 'Mini' | 'Standard' | 'Full day'
+
+type Slot = {
+  start: string
+  end: string
+  available: boolean
 }
 
-type Availabilities = {
-  [key: string]: DaySchedule
+type DaySchedule = {
+  Mini: Slot[]
+  Standard: Slot[]
+  'Full day': Slot[]
 }
+
+type Availabilities = Record<string, DaySchedule>
 
 type DayEvent = {
   summary: string

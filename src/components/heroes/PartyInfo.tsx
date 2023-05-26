@@ -11,8 +11,8 @@ const Packages = [
   {
     name: 'Mini',
     price: '$550',
-    duration: '3hrs',
-    times: '10am-12pm | 1pm-3pm | 5pm-7pm',
+    duration: '2hrs',
+    times: '10a-12p | 1p-3p | 5p-7p',
     details: [
       'Admissions for 10 children ages 1-10 excluding the guest of honor.',
       '2 hours of exclusive use of our playspace, including set up and clean up time.',
@@ -22,7 +22,7 @@ const Packages = [
     name: 'Standard',
     price: '$650',
     duration: '3hrs',
-    times: '9:30am-12:30pm | 1:15pm-4:15pm | 5pm-8pm',
+    times: '9:30a-12:30p | 1:15p-4:15p | 5p-8p',
     details: [
       'Admissions for 15 children ages 1-10 excluding the guest of honor.',
       '4 hours of exclusive use of our playspace, including set up and clean up time.',
@@ -33,7 +33,7 @@ const Packages = [
     name: 'Full day',
     price: '$1,100',
     duration: '7hrs',
-    times: '10am-5pm',
+    times: '10a-5p',
     details: [
       'Admissions for 15 children ages 1-10 excluding the guest of honor.',
       '4 hours of exclusive use of our playspace, including set up and clean up time.',
