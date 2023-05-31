@@ -57,7 +57,7 @@ const PricingHero: React.FC<IPricingHero> = () => {
         </PricingCard>
         <PricingCard
           title="Memberships"
-          description="Members get unlimited access to open play and 20% off parties."
+          description="Members get unlimited access to open play and 10% off parties."
         >
           <div className="mt-auto font-medium">
             <div className="mt-8 flex lg:mt-8 xl:justify-between">
@@ -78,7 +78,7 @@ const PricingHero: React.FC<IPricingHero> = () => {
         </PricingCard>
         <PricingCard
           title="Parties"
-          description="Starts at $550 for 10 children and includes exclusive use of our space for 2 hours. Other packages available as well!"
+          description="Starts at $525 for 10 children and includes exclusive use of our space for 2 hours. Other packages available as well!"
         >
           <div className="mt-auto font-medium">
             <RoundLink

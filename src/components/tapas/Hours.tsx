@@ -3,10 +3,10 @@ interface IHours {
   schedule: string
   isToday: boolean
 }
-
+// ${isToday ? 'font-bold' : ''}
 const Hours: React.FC<IHours> = ({ day, isToday, schedule }) => {
   return (
-    <div className={`mb-2 items-end ${isToday ? 'font-bold' : ''}`}>
+    <div className={`mb-2 items-end`}>
       <h1
         className={`sm:text-md mr-2 text-xl ${
           isToday ? 'text-black' : 'text-neutral-500'

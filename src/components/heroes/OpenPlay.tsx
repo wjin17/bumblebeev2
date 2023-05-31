@@ -17,8 +17,8 @@ const OpenPlayHero: React.FC<IOpenPlayHero> = () => {
             arriving.
           </p>
           <p className="mx-auto mb-4 text-lg font-normal text-stone-600 md:max-w-lg">
-            At this time, we still require adults to wear masks. Shoes are not
-            allowed in our play areas, so please remember to bring socks.
+            Shoes are not allowed in our play areas, so please remember to bring
+            socks.
           </p>
         </div>
         <div className="flex w-full flex-col px-8">

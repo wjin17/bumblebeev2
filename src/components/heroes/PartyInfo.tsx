@@ -10,12 +10,13 @@ interface IPartyInfoHero {}
 const Packages = [
   {
     name: 'Mini',
-    price: '$550',
+    price: '$525',
     duration: '2hrs',
-    times: '10a-12p | 1p-3p | 5p-7p',
+    times: '10a-12p | 2p-4p | 5p-7p',
     details: [
       'Admissions for 10 children ages 1-10 excluding the guest of honor.',
       '2 hours of exclusive use of our playspace, including set up and clean up time.',
+      'Weekday parties start at $475. Please call us for more details.',
     ],
   },
   {
@@ -25,15 +26,16 @@ const Packages = [
     times: '9:30a-12:30p | 1:15p-4:15p | 5p-8p',
     details: [
       'Admissions for 15 children ages 1-10 excluding the guest of honor.',
-      '4 hours of exclusive use of our playspace, including set up and clean up time.',
+      '3 hours of exclusive use of our playspace, including set up and clean up time.',
       '2 of our amazing staff members to help with set up, party time and clean up.',
+      'Weekday parties start at $475. Please call us for more details.',
     ],
   },
   {
     name: 'Full day',
     price: '$1,100',
     duration: '7hrs',
-    times: '10a-5p',
+    times: '9:30a-4:30p',
     details: [
       'Admissions for 15 children ages 1-10 excluding the guest of honor.',
       '4 hours of exclusive use of our playspace, including set up and clean up time.',
